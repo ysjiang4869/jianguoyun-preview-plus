@@ -3,8 +3,9 @@ window.onload = async function () {
     var monitorButtonRow = document.getElementsByClassName('action-button-rou')[1]
     while (!monitorButtonRow) {
         await new Promise(resolve => setTimeout(resolve, 100));
-        monitorButtonRow = document.getElementsByClassName('action-button-rou')[1]       
+        monitorButtonRow = document.getElementsByClassName('action-button-rou')[1]
     }
+    document.body.appendChild(createElementFromHTML(modleHtml));
     // 创建一个观察器实例并传入回调函数
     const observer = new MutationObserver(callback);
     // 以上述配置开始观察目标节点
@@ -15,6 +16,7 @@ window.onload = async function () {
 const config = { attributes: false, childList: true, subtree: false };
 var buttonAdded = false;
 // 当观察到变动时执行的回调函数
+var file_name;
 const callback = function (mutationsList, observer) {
     // Use traditional 'for loops' for IE 11
     // console.log(mutationsList);
@@ -24,10 +26,9 @@ const callback = function (mutationsList, observer) {
     console.log[selected]
     if (selected.length === 1) {
         //judge is select is video
-        var file_name = getFileName(selected[0]);
+        file_name = getFileName(selected[0]);
         if (file_name.match(/.(jpg|jpeg|png|gif)$/i)) {
-            appendButton();
-            console.log(getFilePath());
+            appendButton();            
         }
     } else {
         removeButton();
@@ -46,8 +47,10 @@ function appendButton() {
     let previewButton = document.createElement('button');
     previewButton.setAttribute("class", "btn-item");
     previewButton.setAttribute("id", "jgy_preview_plus");
-    previewButton.appendChild(previewSpan);
-    previewButton.onclick = showPreview
+    previewButton.appendChild(previewSpan);    
+    previewButton.setAttribute('data-toggle', 'modal');
+    previewButton.setAttribute('data-target', '#videoModal');
+    previewButton.onclick=showPreview;
     a.appendChild(previewButton);
     buttonAdded = true;
 }
@@ -86,3 +89,18 @@ function createElementFromHTML(htmlString) {
     // Change this to div.childNodes to support multiple top-level nodes
     return div.firstChild;
 }
+
+const modleHtml = '<div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"> \
+<div class="modal-dialog"> \
+  <div class="modal-content"> \
+    <div class="modal-body"> \
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> \
+      <video controls width="100%"> \
+        <source src="" type="video/mp4"> \
+      </video> \
+    </div> \
+  </div> \
+</div> \
+</div> ';
+
+document.head.appendChild(createElementFromHTML('<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">'));

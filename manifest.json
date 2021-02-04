@@ -13,7 +13,9 @@
   "content_scripts": [
     {
       "js": [
-        "preview.js"
+        "preview.js",
+        "thirdParty/jquery.min.js",
+        "thirdParty/bootstrap.min.js"
       ],
       "matches": [
         "https://www.jianguoyun.com/*"
