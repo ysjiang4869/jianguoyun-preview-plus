@@ -27,8 +27,8 @@ const callback = function (mutationsList, observer) {
     if (selected.length === 1) {
         //judge is select is video
         file_name = getFileName(selected[0]);
-        if (file_name.match(/.(jpg|jpeg|png|gif)$/i)) {
-            appendButton();            
+        if (file_name.match(/.(mp4|mov|mpeg|rmvb)$/i)) {
+            appendButton();
         }
     } else {
         removeButton();
@@ -47,10 +47,10 @@ function appendButton() {
     let previewButton = document.createElement('button');
     previewButton.setAttribute("class", "btn-item");
     previewButton.setAttribute("id", "jgy_preview_plus");
-    previewButton.appendChild(previewSpan);    
+    previewButton.appendChild(previewSpan);
     previewButton.setAttribute('data-toggle', 'modal');
     previewButton.setAttribute('data-target', '#videoModal');
-    previewButton.onclick=showPreview;
+    previewButton.onclick = showPreview;
     a.appendChild(previewButton);
     buttonAdded = true;
 }
@@ -74,12 +74,16 @@ function getFileName(node) {
 
 function getFilePath() {
     var pathNode = document.getElementsByClassName('explorer-list-header')[0];
-    return pathNode.getAttribute('patharr');
+    return pathNode.getAttribute('patharr').trim();
 }
 
-
+const basic
 function showPreview() {
-    
+    //just get the url and add to
+    var url = 'http://127.0.0.1:8092/jianguoyun/video/preview?paths=' 
+    + getFilePath() + '&file=' + file_name+'&auth='+auth;
+    var videoElem = document.getElementById('jgy-video');
+    videoElem.setAttribute('src', url);
 }
 
 function createElementFromHTML(htmlString) {
@@ -95,7 +99,7 @@ const modleHtml = '<div class="modal fade" id="videoModal" tabindex="-1" role="d
   <div class="modal-content"> \
     <div class="modal-body"> \
       <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> \
-      <video controls width="100%"> \
+      <video id="jgy-video" controls width="100%"> \
         <source src="" type="video/mp4"> \
       </video> \
     </div> \
