@@ -1,0 +1,24 @@
+{
+  "manifest_version": 2,
+  "name": "坚果云视频增强",
+  "description": "增强坚果云的视频预览功能",
+  "version": "1.0",
+  "permissions": [
+    "storage"
+  ],
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "js": [
+        "preview.js"
+      ],
+      "matches": [
+        "https://www.jianguoyun.com/*"
+      ],
+      "run_at": "document_end"
+    }
+  ]
+}
