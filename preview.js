@@ -77,13 +77,18 @@ function getFilePath() {
     return pathNode.getAttribute('patharr').trim();
 }
 
-const basic
 function showPreview() {
     //just get the url and add to
-    var url = 'http://127.0.0.1:8092/jianguoyun/video/preview?paths=' 
-    + getFilePath() + '&file=' + file_name+'&auth='+auth;
-    var videoElem = document.getElementById('jgy-video');
-    videoElem.setAttribute('src', url);
+    chrome.storage.local.get(['jgy_bcode'], function (result) {
+        if (!result.jgy_bcode) {
+            alert('please add account first')
+            return;
+        }
+        var url = 'http://127.0.0.1:8092/jianguoyun/video/preview?paths='
+            + getFilePath() + '&file=' + file_name + '&auth=' + result.jgy_bcode;
+        var videoElem = document.getElementById('jgy-video');
+        videoElem.setAttribute('src', url);
+    });
 }
 
 function createElementFromHTML(htmlString) {
