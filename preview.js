@@ -23,6 +23,9 @@ const callback = function (mutationsList, observer) {
     //some item selected
     //check if only one selected
     var selected = document.getElementsByClassName('cube-wrap selected');
+    if (selected.length === 0) {
+        selected = document.getElementsByClassName('position-box is-selected ');
+    }
     console.log[selected]
     if (selected.length === 1) {
         //judge is select is video
@@ -64,10 +67,11 @@ function removeButton() {
 }
 
 function getFileName(node) {
-    for (let child of node.parentNode.childNodes) {
-        if (child.getAttribute('class') === 'file-name') {
-            return child.childNodes[0].textContent.trim();
-        }
+    if (node.getAttribute('class') === 'cube-wrap selected') {
+        return node.parentNode.getElementsByClassName('file-name')[0].textContent.trim();
+    }
+    if (node.getAttribute('class') === 'position-box is-selected ') {
+        return node.getElementsByClassName('file-text-inner css-ellipsis')[0].textContent.trim();
     }
     return "";
 }
