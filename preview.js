@@ -84,8 +84,8 @@ function showPreview() {
             alert('please add account first')
             return;
         }
-        var url = 'http://127.0.0.1:8092/jianguoyun/video/preview?paths='
-            + getFilePath() + '&file=' + file_name + '&auth=' + result.jgy_bcode;
+        //just get the url and add to video element
+        var url = 'https://dav.jianguoyun.com/dav/' + getFilePath().split(',').join('/') + '/' + file_name;
         var videoElem = document.getElementById('jgy-video');
         videoElem.setAttribute('src', url);
     });

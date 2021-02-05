@@ -1,10 +1,13 @@
 {
   "manifest_version": 2,
-  "name": "坚果云视频增强",
-  "description": "增强坚果云的视频预览功能",
+  "name": "坚果云预览增强",
+  "description": "增强坚果云的预览功能",
   "version": "1.0",
   "permissions": [
-    "storage"
+    "storage",
+    "webRequest",
+    "webRequestBlocking",
+    "*://*.jianguoyun.com/*"
   ],
   "browser_action": {
     "default_icon": "icon.png",
@@ -22,5 +25,12 @@
       ],
       "run_at": "document_end"
     }
-  ]
+  ],
+  "background": {
+    "scripts": [
+      "request.js"
+    ]
+  }
+
+
 }

@@ -14,7 +14,6 @@ function documentEvents() {
             var account = document.getElementById('account_box').value;
             var code = document.getElementById('code_box').value;
             var auth = btoa(account + ':' + code);
-            alert(auth);
             chrome.storage.local.set({ jgy_bcode: auth }, function () {
                 alert('saved success');
             });
