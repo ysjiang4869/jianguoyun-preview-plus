@@ -11,6 +11,6 @@ chrome.webRequest.onAuthRequired.addListener(
         //get info        
         return { authCredentials: authCredentials };
     },
-    { urls: ["<all_urls>"] },
+    { urls: ["https://dav.jianguoyun.com/*"] },
     ['blocking']
 );
