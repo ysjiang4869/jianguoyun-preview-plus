@@ -20,6 +20,9 @@
         "thirdParty/jquery.min.js",
         "thirdParty/bootstrap.min.js"
       ],
+      "css": [
+        "thirdParty/bootstrap.custom.css"
+      ],
       "matches": [
         "https://www.jianguoyun.com/*"
       ],
@@ -31,6 +34,4 @@
       "request.js"
     ]
   }
-
-
 }

@@ -116,4 +116,4 @@ const modleHtml = '<div class="modal fade" id="videoModal" tabindex="-1" role="d
 </div> \
 </div> ';
 
-document.head.appendChild(createElementFromHTML('<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">'));
+// document.head.appendChild(createElementFromHTML('<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">'));
