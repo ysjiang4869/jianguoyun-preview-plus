@@ -1,2 +1,8 @@
-# jianguoyun-video-plus
-jianguoyun video preview chrome extension
+# 坚果云预览chrome插件
+
+由于坚果云非企业会员不支持网页预览视频，导致整理拍摄的视频很不方便，所以开发了这个插件。
+
+## 安装
+
+1. 下载本仓库为zip，解压到一个新的文件夹中
+2. chrome打开扩展管理界面，打开开发者模式，选择加载已解压的扩展，选择上一步解压的文件夹
